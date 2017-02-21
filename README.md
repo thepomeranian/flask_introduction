@@ -28,7 +28,7 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
 
       ###### Your directory should look something like this if you named your virtualenv (venv)
 
-      ![file_directory](http://imgur.com/jGEWzWE)
+      ![file_directory](https://i.imgur.com/jGEWzWE.png)
 
     * Keeps different project environments isolated and contained
 
@@ -287,7 +287,7 @@ In the command line, type `cd ..` to go back to the root directory of the app an
 
 Refresh or reopen your `localhost:5000` browser window and you should see:
 
-![greeting_form](http://imgur.com/n1yfbMb)
+![greeting_form](https://i.imgur.com/n1yfbMb.png)
 
 We have a form that collects a user input (the name) when we click on `Submit`, but that form doesn't go anywhere yet. However, the URL has changed to:
 
@@ -336,7 +336,7 @@ Now, go ahead and run the server again with `python sever.py`.
 
 Voila! You should now see something like this:
 
-![working_form](http://imgur.com/XWEtHEq)
+![working_form](https://i.imgur.com/XWEtHEq.gif)
 
 Sweet, we now have super simple app that collects information and outputs it. _*Note: In the future, we can incorporate various databases and utilize `flask-sqlalchemy`._
 
