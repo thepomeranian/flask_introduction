@@ -28,7 +28,7 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
 
       ###### Your directory should look something like this if you named your virtualenv (venv)
 
-      ![file_directory](/Users/Dragonair/Desktop/flask_presentation/pics/file_directory.png)
+      ![file_directory](http://imgur.com/jGEWzWE)
 
     * Keeps different project environments isolated and contained
 
@@ -41,10 +41,10 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
 
 *   **For installation instructions and setting up virtualenv:** http://flask.pocoo.org/docs/0.12/installation/#installation 
 
-    `pip install flask` installs all of flasks dependencies and the default templating language. (There are many others to choose from.)
+      `pip install flask` installs all of flasks dependencies and the default templating language. (There are many others to choose from.)
 
 
-    ```basic
+    ​```basic
         (venv) ruru [~/Desktop/flask_presentation] pip install flask
         Collecting flask
           Downloading Flask-0.12-py2.py3-none-any.whl (82kB)
@@ -71,17 +71,17 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
         Successfully built itsdangerous MarkupSafe
         Installing collected packages: itsdangerous, Werkzeug, MarkupSafe, Jinja2, click, flask
         Successfully installed Jinja2-2.9.5 MarkupSafe-0.23 Werkzeug-0.11.15 click-6.7 flask-0.12 itsdangerous-0.24
-    ```
+    ​```
 
 ## What is Flask
-Flask is a highly flexible, small, simple, and elegant Python server. Generally, it is used with a templating framework, Jinja2 _(as mentioned above)_. 
+Flask is a highly flexible, small, simple, and elegant Python web framework. Generally, it is used with a templating framework, Jinja2 _(as mentioned above)_. 
 
 For the purpose of this tutorial, we will start with the standard 'Hello World' tutorial from the official docs and then refactor it into a Django-like structure.
 
 ## Demo App: Hello World pt 1
 [`Link: Hello World`](http://flask.pocoo.org/docs/0.12/quickstart/#a-minimal-application) 
 
-Lets go ahead and copy the code into a file called `server.py` with `touch server.py`.
+Create an empty file with `touch server.py`.
 
 ```python
 from flask import Flask
@@ -99,7 +99,7 @@ To run the app type in the command line:
 > flask run
 ```
 
-_ *Note: `export FLASK_APP=server.py` creates an environment variable that only needs to written once. Some people opt to use environment variables instead of having a secrets file._
+_*Note: `export FLASK_APP=server.py` creates an environment variable that only needs to written once. Some people opt to use environment variables instead of having a secrets file._
 
 Result: 
 
@@ -169,9 +169,9 @@ Here's a sample:
 {% endblock %}
 ````
 
-The `extends` means that it can take it's default template from `layout.html`. The portion that's unique to this particular HTML page is the content within `block content` and `end block`. 
+`extends` means that we will inject our content into an existing template, `layout.html` in this case. The portion that's unique to this particular HTML page is the content within `block content` and `end block`. 
 
-Variables can be passed from functions out to the template by using the double curly braces `{{}}`. 
+Variables can be passed from view functions to the template with the `render_template` function and the double curly braces  are used to "bind" those values (aka, dynamically display).
 
 In our 'Hello World', we can write a function and return a variable along with a template by importing the module `render_template`. 
 
@@ -186,17 +186,17 @@ def hello_world():
 
 Broken down line-by-line:
 
+This searches the submitted `<form>` values for one called `person` using the `request` module (can also be imported along with `render_template`) and binds it to the variable `user`.
+
 ```python
  user = request.args.get('person')
 ```
 
-This searches the HTML template for a variable called `person` using the `request` module (can also be imported along with `render_template`) and binds it to the variable `user`.
+Here, we use the function `render_template`  to render the `index.html` template, and pass our local variable `name` to the template as variable  `user` (so that we can do `{{ user }}`.
 
 ```python
 return render_template('index.html', user=name)
 ```
-
-This `render_template` pulls up the `index.html` template and everytime it finds the word `name` it will replace it with the variable `user`. 
 
 `{{my_list[3]}}` looks in the list `my_list` and replaces it with the contents of the 4th item in the list. 
 
@@ -287,7 +287,7 @@ In the command line, type `cd ..` to go back to the root directory of the app an
 
 Refresh or reopen your `localhost:5000` browser window and you should see:
 
-![greeting_form](/Users/Dragonair/Desktop/flask_presentation/pics/greeting_form.png)
+![greeting_form](http://imgur.com/n1yfbMb)
 
 We have a form that collects a user input (the name) when we click on `Submit`, but that form doesn't go anywhere yet. However, the URL has changed to:
 
@@ -336,7 +336,7 @@ Now, go ahead and run the server again with `python sever.py`.
 
 Voila! You should now see something like this:
 
-![working_form](/Users/Dragonair/Desktop/flask_presentation/pics/working_form.gif)
+![working_form](http://imgur.com/XWEtHEq)
 
 Sweet, we now have super simple app that collects information and outputs it. _*Note: In the future, we can incorporate various databases and utilize `flask-sqlalchemy`._
 
