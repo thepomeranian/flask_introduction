@@ -41,7 +41,7 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
 
 *   **For installation instructions and setting up virtualenv:** http://flask.pocoo.org/docs/0.12/installation/#installation 
 
-      `pip install flask` installs all of flasks dependencies and the default templating language. (There are many others to choose from.)
+            `pip install flask` installs all of flasks dependencies and the default templating language. (There are many others to choose from.)
 
 
     ​```basic

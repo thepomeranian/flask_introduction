@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flask - An Introduction</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Frances Liu">
+    <meta name="description" content="An Introduction to Flask, a Python web development microframework">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link href="style.css" rel="stylesheet">
+    <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'lib/css/print/pdf.css' : 'lib/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section id="title">
+                <h1>Flask,</h1>
+                <h2>a microframework</h2>
+                <br>
+                <p><a href="http://frances-liu.com" target="_blank">Frances Liu</a></p>
+                <br>
+            </section>
+            <section id="outline">
+                <h2>Outline</h2>
+                <ol>
+                    <li>What is a web server?</li>
+                    <li>Two major Python web frameworks: Django and Flask</li>
+                    <li>What is Flask?</li>
+                    <li>Live Coding: 'Hello World' pt 1</li>
+                    <li>Routing</li>
+                    <li>Templates with Jinja2</li>
+                    <li>Live Coding: 'Hello World' pt 2</li>
+                </ol>
+            </section>
+            <section id="intro">
+                <section>
+                    <h1>Intro to Web Dev</h1>
+                </section>
+                <section>
+                    <h2>What is a web server?</h2>
+                    <ul>
+                        <li class="fragment">A program that runs on a machine that is constantly waiting for web requests.</li>
+                    </ul>
+                </section>
+                <section>
+                    <img src="http://prasadhonrao.com/wp-content/uploads/2011/09/web-server-processing.png">
+                </section>
+                <section>
+                    <h2>Flask</h2>
+                    <p class="fragment">Microframework</p>
+                    <p class="fragment">Extentions available to customize your framework</p>
+                </section>
+                <section>
+                    <h2>Who's using it?</h2>
+                    <ul>
+                        <li>Pinterest</li>
+                        <li>Twilio</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Django</h2>
+                    <p class="fragment">Full framework aka "batteries included"</p>
+                    <p class="fragment">Comes with a default set up -- "boilerplate"</p>
+                </section>
+                <section>
+                    <h2>Who's using it?</h2>
+                    <ul>
+                        <li>Spotify</li>
+                        <li>Instagram</li>
+                        <li>The Washington Post</li>
+                    </ul>
+                </section>
+            </section>
+            <section id="virtual_envinronment">
+                <section>
+                    <h1>Virtual Environments</h1>
+                </section>
+                <section>
+                    <h2>What is a virtural environment?</h2>
+                    <p class="fragment">A tool that allows the user to create multiple isolated Python environments on one machine.</p>
+                </section>
+                <section>
+                    <h2>What does it do?</h3>
+                    <p class="fragment">Keeps different project environments isolated and contained</p>
+                </section>
+            </section>
+            <section id=live_coding_1>
+              <section>
+                <h2>What is Flask?</h2>
+                    <p class="fragment">Flask is a highly flexible, small, simple, and elegant Python web framework. Generally, it is used with a templating framework, Jinja2</p>
+                </section>
+                <section>
+                    <h1>Hello, World!</h1>
+                </section>
+                <section>
+                  <p data-markdown>
+                        <script type="text/template">
+                            Create an empty file with `touch server.py`.
+```python
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+```
+                        </script>
+                    </p>
+                </section>
+                <section>
+                  <p data-markdown>
+                    <script type="text/template">
+                      To run the app type in the command line:
+
+```basic
+> export FLASK_APP=server.py
+> flask run
+```
+                    </script>
+                  </p>
+                </section>
+            </section>
+            <section id="routing">
+              <section>
+                <h1>Routing</h1>
+                  <p data-markdown>
+                  <script type="text/template">
+`@app.route('')`
+                  </script>
+                  </p>
+              </section>
+            </section>
+            <section id="templating">
+              <section>
+                <h1>Templating with Jinja2</h1>
+              </section>
+              <section>
+                <h2>What is templating?</h2>
+                  <p class="fragment">Templating is a way to represent data in different forms.</p>
+              </section>
+              <section>
+                <h2>What is Jinja2?</h2>
+                <p class="fragment">Popular and fully featured template engine by the same creator as Flask.</p>
+              </section>
+              <section>
+                <p data-markdown>
+                    <script type="text/template">
+                     Here's a sample:
+
+```python
+{% extends "layout.html" %}
+{% block content %}
+  <h3> This is the start of my child template</h3>
+  <br>
+  <p>My string: {{my_string}}</p>
+  <p>Value from the list: {{my_list[3]}}</p>
+  <p>Loop through the list:</p>
+  <ul>
+    {% for n in my_list %}
+    <li>{{n}}</li>
+    {% endfor %}
+  </ul>
+  {% endblock %}
+{% endblock %}
+```
+                    </script>
+                  </p>
+              </section>
+              <section>
+                <p data-markdown>
+                  <script type="text/template">
+                    For example:
+
+```python
+@app.route('/')
+def hello_world():
+    user = request.args.get('person')
+    return render_template('index.html', user=name)
+```
+                  </script>
+                </p>
+              </section>
+            </section>
+            <section id="live_coding_2">
+              <section>
+                <h1>Hello World, pt2</h1>
+              </section>
+              <section>
+              <p>First, let's bind the application name to a variable and turn on the debugger</p>
+                <p data-markdown>
+                  <script type="text/template">
+                    The `server.py` file should look like this:
+
+```python
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+                  </script>
+                </p>
+              </section>
+              <section>
+                <p data-markdown>
+                  <script type="text/template">
+                    In `index.html`, add in this code for a simple form:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Who are you?</title>
+</head>
+<body>
+    <form action="/welcome">
+        <label>What's your name?
+            <input type="text" name="person">
+        </label>
+        <input type="submit">
+    </form>
+</body>
+</html>
+```
+                  </script>
+                </p>
+              </section>
+              <section>
+                <p data-markdown>
+                  <script type="text/template">
+                    In `server.py`, add `render_template` to import's and, and create a new function called `greeting_generator`.
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/greetings')
+def greeting_generator():
+    return render_template('index.html')
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+                  </script>
+                </p>
+              </section>
+              <section>
+                <p data-markdown>
+                  <script type="text/template">
+                    Add `request` to imports, and create another route `welcome` that greets the person.
+
+                    The `server.py` should look like this:
+```python
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+
+@app.route('/greetings')
+def greeting_generator():
+    return render_template("index.html")
+
+
+@app.route('/welcome')
+def greeting():
+    user = request.args.get("person")
+    return render_template("greeting.html", name=user)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+                  </script>
+                </p>
+              </section>
+              <section>
+                <p data-markdown>
+                  <script type="text/template">
+                    Create another html template called `greetings.html`.
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome!</title>
+</head>
+<body>
+    Welcome, {{ name }}.
+</body>
+</html>
+```
+                  </script>
+                </p>
+              </section>
+            </section>
+            <section id="end">
+                <h1>Thank You</h1>
+                <h2>Questions?</h2>
+                <div class="contactInfo">
+                    <p>Frances Liu</p><a href="http://frances-liu.com">frances-liu.com</a>
+                    <br><p>Slack: @frances.liu</p>
+                    <br>
+                    <p>Email: frances.liu@teradata.com</p>
+                </div>
+            </section>
+            <section>
+              <h2>Possible topics:</h2>
+                <ul>
+                  <li>Making a Slackbot with Flask</li>
+                  <li>Making a Twilio app with Flask</li>
+                  <li>Making a Flask blog</li>
+                  <li>Making a Flask API</li>
+                  <li>Making a TweeterBot with Flask</li>
+                  <li>Django Hello World</li>
+                  <li>Django Blog</li>
+                  <li>Django vs Flask (side by side)</li>
+                  <li>Open to other suggestions</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="lib/js/reveal.js"></script>
+    <script>
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        rollingLinks: true,
+        transition: "convex",
+        //- width: "90%",
+        //- height: 1.0,
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            {
+                src: 'lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            },
+
+            // Interpret Markdown in <section> elements
+            {
+                src: 'plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+
+            // Syntax highlight for <code> elements
+            {
+                src: 'plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+
+            // Zoom in and out with Alt+click
+            {
+                src: 'plugin/zoom-js/zoom.js',
+                async: true
+            },
+
+            // Speaker notes
+            {
+                src: 'plugin/notes/notes.js',
+                async: true
+            },
+
+            //- // Remote control your reveal.js presentation using a touch device
+            //- { src: 'plugin/remotes/remotes.js', async: true },
+
+            //- // MathJax
+            //- { src: 'plugin/math/math.js', async: true }
+        ]
+    });
+    </script>
+</body>
+
+</html>
