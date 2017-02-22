@@ -41,7 +41,7 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
 
 *   **For installation instructions and setting up virtualenv:** http://flask.pocoo.org/docs/0.12/installation/#installation 
 
-            `pip install flask` installs all of flasks dependencies and the default templating language. (There are many others to choose from.)
+              `pip install flask` installs all of flasks dependencies and the default templating language. (There are many others to choose from.)
 
 
     ​```basic
@@ -76,7 +76,7 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
 ## What is Flask
 Flask is a highly flexible, small, simple, and elegant Python web framework. Generally, it is used with a templating framework, Jinja2 _(as mentioned above)_. 
 
-For the purpose of this tutorial, we will start with the standard 'Hello World' tutorial from the official docs and then refactor it into a Django-like structure.
+For the purpose of this tutorial, we will start with the standard 'Hello World' tutorial from the official docs.
 
 ## Demo App: Hello World pt 1
 [`Link: Hello World`](http://flask.pocoo.org/docs/0.12/quickstart/#a-minimal-application) 

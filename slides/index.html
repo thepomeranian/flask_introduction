@@ -48,14 +48,24 @@
                     <ul>
                         <li class="fragment">A program that runs on a machine that is constantly waiting for web requests.</li>
                     </ul>
+                    <aside class="notes">
+                        It can process requests and issue responses using HTTP. HTTP is a protocol used to distribute information on the web. 
+                    </aside>
                 </section>
                 <section>
                     <img src="http://prasadhonrao.com/wp-content/uploads/2011/09/web-server-processing.png">
+                    <aside class="notes">
+                      Here's a very simple example, if you open https://www.google.com on your preferred web browser, it will send a request to Google's web server, look for it's  index.html  and returns the HTML back to the browser to be rendered on the user's browser.
+                    </aside>
                 </section>
                 <section>
                     <h2>Flask</h2>
                     <p class="fragment">Microframework</p>
                     <p class="fragment">Extentions available to customize your framework</p>
+                    <aside class="notes">
+                      <li>"Hands on the wire" approach</li>
+                      <li>Lightweight</li>
+                    </aside>
                 </section>
                 <section>
                     <h2>Who's using it?</h2>
@@ -68,6 +78,12 @@
                     <h2>Django</h2>
                     <p class="fragment">Full framework aka "batteries included"</p>
                     <p class="fragment">Comes with a default set up -- "boilerplate"</p>
+                    <aside class="notes">
+                      <li>User authentication</li>
+                      <li>Management panel</li>
+                      <li>Forms</li>
+                      <li>Upload files</li>
+                    </aside>
                 </section>
                 <section>
                     <h2>Who's using it?</h2>
@@ -85,6 +101,9 @@
                 <section>
                     <h2>What is a virtural environment?</h2>
                     <p class="fragment">A tool that allows the user to create multiple isolated Python environments on one machine.</p>
+                    <aside class="notes">
+                      <li>e.g. system uses v2.6, one app uses v3.5 and another v2.7.</li>
+                    </aside>
                 </section>
                 <section>
                     <h2>What does it do?</h3>
@@ -95,9 +114,16 @@
               <section>
                 <h2>What is Flask?</h2>
                     <p class="fragment">Flask is a highly flexible, small, simple, and elegant Python web framework. Generally, it is used with a templating framework, Jinja2</p>
+                    <aside class="notes">
+                      For the purpose of this tutorial, we will start with the standard 'Hello World' tutorial from the official docs.
+                    </aside>
                 </section>
                 <section>
                     <h1>Hello, World!</h1>
+                    <aside class="notes">
+                      <li>Do virtualenv</li>
+                      <li>pip install flask</li>
+                    </aside>
                 </section>
                 <section>
                   <p data-markdown>
@@ -124,6 +150,10 @@ def hello_world():
 > flask run
 ```
                     </script>
+                    <aside class="notes">
+                      <li>export FLASK_APP=server.py creates an environment variable that only needs to written once. Some people opt to use environment variables instead of having a secrets file.</li>
+                      <li>Now, let's break it down line-by-line to understand what's going on within those few lines of code better. Since real world applications are more object-orientated and split into pieces, we can refactor the code after we solidify our understanding.</li>
+                    </aside>
                   </p>
                 </section>
             </section>
@@ -135,6 +165,11 @@ def hello_world():
 `@app.route('')`
                   </script>
                   </p>
+                  <aside class="notes">
+                    <li>In web development, most modern web frameworks use a routing technique to help a user easily reference URL's. @app.route('') is a decorator that binds the URL to a function. </li>
+                    <li>When a user goes to a URL such as http://www.sampleapp.com/signup' it would find the decorator @app.route('/signup') in the server.py file and return the function associated to it. </li>
+                    <li>Our current 'Hello World' text from localhost:5000 comes from this function def hello_world(): returning the string 'Hello,World!' which would then be rendered into the web browser. </li>
+                  </aside>
               </section>
             </section>
             <section id="templating">
@@ -144,6 +179,9 @@ def hello_world():
               <section>
                 <h2>What is templating?</h2>
                   <p class="fragment">Templating is a way to represent data in different forms.</p>
+                  <aside class="notes">
+                    The purpose of them is to reduce the amount of physical changes needed to change output (normally HTML) and reduce the amount of time spent on creating redundant code. Basic data manipulation is possible within templates such as traversing through lists forwards and backwards, capitalizing text, looping with for loops, etc. 
+                  </aside>
               </section>
               <section>
                 <h2>What is Jinja2?</h2>
@@ -172,6 +210,10 @@ def hello_world():
 ```
                     </script>
                   </p>
+                  <aside class="notes">
+                    <li>extends means that we will inject our content into an existing template, layout.html in this case. The portion that's unique to this particular HTML page is the content within block content and end block. </li>
+                    <li>Variables can be passed from view functions to the template with the render_template function and the double curly braces  are used to "bind" those values (aka, dynamically display).</li>
+                  </aside>
               </section>
               <section>
                 <p data-markdown>
@@ -186,11 +228,23 @@ def hello_world():
 ```
                   </script>
                 </p>
+                <aside class="notes">
+                  <li>In our 'Hello World', we can write a function and return a variable along with a template by importing the module render_template. </li>
+                  <li>Broken down line by line: This searches the submitted <form> values for one called person using the request module (can also be imported along with render_template) and binds it to the variable user.</li>
+                  <li>Here, we use the function render_template  to render the index.html template, and pass our local variable name to the template as variable  user (so that we can do {{ user }}.</li>
+                  <li>{{my_list[3]}} looks in the list my_list and replaces it with the contents of the 4th item in the list. </li>
+                  <li>This is a Jinja2 for loop. Amazing, right? A for loop INSIDE of HTML. Unfortunately, while loops are not supported. </li>
+                </aside>
               </section>
             </section>
             <section id="live_coding_2">
               <section>
                 <h1>Hello World, pt2</h1>
+                <aside class="notes">
+                  <li>With routing and templating in mind, let's make this 'Hello World' more interesting. </li>
+
+                  <li>At this time, go ahead and quit out of your previous instance of the 'Hello World' app by pressing CTRL+C.</li>
+                </aside>
               </section>
               <section>
               <p>First, let's bind the application name to a variable and turn on the debugger</p>
@@ -234,6 +288,9 @@ if __name__ == "__main__":
 ```
                   </script>
                 </p>
+                <aside class="notes">
+                  We'll now start adding in some HTML. Create a directory called templates using mkdir templates in the command line, cd templates to enter that directory and create a file called index.html in templates using touch index.html. 
+                </aside>
               </section>
               <section>
                 <p data-markdown>
@@ -253,6 +310,11 @@ if __name__ == "__main__":
 ```
                   </script>
                 </p>
+                <aside class="notes">
+                  We have a form that collects a user input (the name) when we click on Submit, but that form doesn't go anywhere yet. However, the URL has changed to: http://localhost:5000/welcome?person=Frances
+
+                   Let's add request to imports, and create another route welcome that greets the person. *Note: It is possible to do this within one function, but for the purpose of this tutorial we will do this separately.
+                </aside>
               </section>
               <section>
                 <p data-markdown>
