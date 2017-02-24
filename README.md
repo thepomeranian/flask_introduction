@@ -44,17 +44,17 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
               `pip install flask` installs all of flasks dependencies and the default templating language. (There are many others to choose from.)
 
 
-    ​```basic
+    ```basic
         (venv) ruru [~/Desktop/flask_presentation] pip install flask
         Collecting flask
           Downloading Flask-0.12-py2.py3-none-any.whl (82kB)
             100% |████████████████████████████████| 92kB 541kB/s 
         Collecting itsdangerous>=0.21 (from flask)
           Downloading itsdangerous-0.24.tar.gz (46kB)
-            100% |████████████████████████████████| 51kB 3.4MB/s 
+          100% |████████████████████████████████| 51kB 3.4MB/s
         Collecting Werkzeug>=0.7 (from flask)
           Downloading Werkzeug-0.11.15-py2.py3-none-any.whl (307kB)
-            100% |████████████████████████████████| 317kB 2.0MB/s 
+            100% |████████████████████████████████| 317kB 2.0MB/s
         Collecting Jinja2>=2.4 (from flask)
           Downloading Jinja2-2.9.5-py2.py3-none-any.whl (340kB)
             100% |████████████████████████████████| 348kB 2.4MB/s 
@@ -71,7 +71,7 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
         Successfully built itsdangerous MarkupSafe
         Installing collected packages: itsdangerous, Werkzeug, MarkupSafe, Jinja2, click, flask
         Successfully installed Jinja2-2.9.5 MarkupSafe-0.23 Werkzeug-0.11.15 click-6.7 flask-0.12 itsdangerous-0.24
-    ​```
+    ```
 
 ## What is Flask
 Flask is a highly flexible, small, simple, and elegant Python web framework. Generally, it is used with a templating framework, Jinja2 _(as mentioned above)_. 
