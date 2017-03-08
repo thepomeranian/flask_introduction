@@ -41,20 +41,20 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
 
 *   **For installation instructions and setting up virtualenv:** http://flask.pocoo.org/docs/0.12/installation/#installation 
 
-              `pip install flask` installs all of flasks dependencies and the default templating language. (There are many others to choose from.)
+  `pip install flask` installs all of flask's dependencies and the default templating language. 
+  (There are many others to choose from.)
 
-
-    ​```basic
+    ```basic
         (venv) ruru [~/Desktop/flask_presentation] pip install flask
         Collecting flask
           Downloading Flask-0.12-py2.py3-none-any.whl (82kB)
             100% |████████████████████████████████| 92kB 541kB/s 
         Collecting itsdangerous>=0.21 (from flask)
           Downloading itsdangerous-0.24.tar.gz (46kB)
-            100% |████████████████████████████████| 51kB 3.4MB/s 
+          100% |████████████████████████████████| 51kB 3.4MB/s
         Collecting Werkzeug>=0.7 (from flask)
           Downloading Werkzeug-0.11.15-py2.py3-none-any.whl (307kB)
-            100% |████████████████████████████████| 317kB 2.0MB/s 
+            100% |████████████████████████████████| 317kB 2.0MB/s
         Collecting Jinja2>=2.4 (from flask)
           Downloading Jinja2-2.9.5-py2.py3-none-any.whl (340kB)
             100% |████████████████████████████████| 348kB 2.4MB/s 
@@ -71,9 +71,9 @@ Some popular web servers are [Apache](https://httpd.apache.org/) and [nginx](htt
         Successfully built itsdangerous MarkupSafe
         Installing collected packages: itsdangerous, Werkzeug, MarkupSafe, Jinja2, click, flask
         Successfully installed Jinja2-2.9.5 MarkupSafe-0.23 Werkzeug-0.11.15 click-6.7 flask-0.12 itsdangerous-0.24
-    ​```
+    ```
 
-## What is Flask
+## What is Flask?
 Flask is a highly flexible, small, simple, and elegant Python web framework. Generally, it is used with a templating framework, Jinja2 _(as mentioned above)_. 
 
 For the purpose of this tutorial, we will start with the standard 'Hello World' tutorial from the official docs.
@@ -99,6 +99,11 @@ To run the app type in the command line:
 > flask run
 ```
 
+To make sure the environment variable is set:
+ ```basic
+ > echo $FLASK_APP
+ ```
+ 
 _*Note: `export FLASK_APP=server.py` creates an environment variable that only needs to written once. Some people opt to use environment variables instead of having a secrets file._
 
 Result: 
@@ -110,7 +115,7 @@ Result:
 
 In this instance, the flask server is now up and running on its default localhost:5000. Now, go to localhost:5000 in your preferred browser and you'll see 'Hello World' in plain text.
 
-Now, let's break it down line-by-line to understand what's going on within those few lines of code better. Since real world applications are more object-orientated and split into pieces, we can refactor the code after we solidify our understanding. 
+Now, let's break it down line-by-line to understand what's going on within those few lines of code. Since real world applications are more object-orientated and split into pieces, we can refactor the code after we solidify our understanding. 
 
 Import necessary library:
 
@@ -144,7 +149,7 @@ Our current 'Hello World' text from `localhost:5000` comes from this function `d
 
 ### What is templating?
 
-Templating is a way to represent data in different forms. The purpose of them is to reduce the amount of physical changes needed to change output (normally HTML) and reduce the amount of time spent on creating redundant code. Basic data manipulation is possible within templates such as traversing through lists forwards and backwards, capitalizing text, looping with for loops, etc. 
+Templating is a way to represent data in different forms. Templates reduce the amount of physical changes needed to change output (normally HTML) and reduce the amount of time spent on creating redundant code. Basic data manipulation is possible within templates such as traversing through lists forwards and backwards, capitalizing text, looping with for loops, etc.
 
 ### What is [Jinja2](http://jinja.pocoo.org/)?
 
@@ -192,7 +197,7 @@ This searches the submitted `<form>` values for one called `person` using the `r
  user = request.args.get('person')
 ```
 
-Here, we use the function `render_template`  to render the `index.html` template, and pass our local variable `name` to the template as variable  `user` (so that we can do `{{ user }}`.
+Here, we use the function `render_template`  to render the `index.html` template, and pass our local variable `name` to the template as variable  `user` (so that we can do `{{ user }}`).
 
 ```python
 return render_template('index.html', user=name)
@@ -245,7 +250,7 @@ Type in:
 > python server.py
 ```
 
-Surprise! It now instantly spins up the server. 
+Surprise! It now instantly spins up the server because of the `app.run` called in our '`main`'. 
 
 We'll now start adding in some HTML. Create a directory called `templates` using `mkdir templates` in the command line, `cd templates` to enter that directory and create a file called `index.html` in templates using `touch index.html`. 
 
